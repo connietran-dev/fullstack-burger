@@ -2,6 +2,12 @@
 
 <h2>Burgers are delicious!</h2>
 
+<ul>
+  {{#each burgers}}
+        <li>{{this.burger_name}} | Devoured: {{this.devoured}} </li>
+  {{/each}}
+</ul>
+
 <h2>Add a Burger</h2>
 <form class="create-form">
 

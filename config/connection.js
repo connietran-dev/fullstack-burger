@@ -1,4 +1,4 @@
-// Set up MySQL connection.
+// Set up connection from Node to MySQL and export the connection
 const mysql = require('mysql');
 
 const connection = mysql.createConnection({
