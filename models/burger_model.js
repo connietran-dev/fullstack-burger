@@ -19,6 +19,11 @@ const burger = {
         });
     },
     // UPDATE burgers SET columns WHERE condition
+    update: function (objColVals, condition, cb) {
+        orm.update("burgers", objColVals, condition, function (res) {
+            cb(res);
+        });
+    }
     // DELETE FROM burgers WHERE condition
 };
 

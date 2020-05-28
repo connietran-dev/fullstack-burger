@@ -2,9 +2,27 @@
 
 <h2>Burgers are delicious!</h2>
 
+<h2>Burgers that are not yet devoured</h2>
+
+{{!-- If devoured returns a falsy value (ie, not yet devoured), Handlebars WILL render burger-block partial, setting devoured to false. 
+Otherwise, it will render nothing. --}}
 <ul>
   {{#each burgers}}
-        <li>{{this.burger_name}} | Devoured: {{this.devoured}} </li>
+    {{#unless devoured}}
+      {{> burgers/burger-block devoured=false}}
+    {{/unless}}
+  {{/each}}
+</ul>
+
+
+<h2>Burgers that are devoured</h2>
+
+{{!-- If devoured is true (eaten), it will render --}}
+<ul>
+  {{#each burgers}}
+    {{#if devoured}}
+      {{> burgers/burger-block devoured=true}}
+    {{/if}}
   {{/each}}
 </ul>
 

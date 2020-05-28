@@ -70,7 +70,25 @@ const orm = {
 
       cb(result);
     });
-  }
+  },
+  // An example of objColVals would be {burger_name: panther, devoured: true}
+  update: function (table, objColVals, condition, cb) {
+    var queryString = "UPDATE " + table;
+
+    queryString += " SET ";
+    queryString += objToSql(objColVals);
+    queryString += " WHERE ";
+    queryString += condition;
+
+    console.log("UPDATE query: ", queryString);
+    connection.query(queryString, function (err, result) {
+      if (err) {
+        throw err;
+      }
+
+      cb(result);
+    });
+  },
 };
 
 // Export the orm object for the model (burger_model.js).
