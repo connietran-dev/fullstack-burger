@@ -7,11 +7,17 @@ const burger = {
         // SELECT * FROM burgers
         orm.all("burgers", function (res) {
             // Returns RowDataPacket array results from burgers table to router
-            console.log("All db results from burgers: ", res);
+            console.log("All results from 'burgers' table: ", res);
             cb(res);
         });
-    }
-    // INSERT INTO burgers VALUES ?
+    },
+    // The variables cols and vals are arrays.
+    create: function (cols, vals, cb) {
+        // INSERT INTO burgers VALUES ?
+        orm.create("burgers", cols, vals, function (res) {
+            cb(res);
+        });
+    },
     // UPDATE burgers SET columns WHERE condition
     // DELETE FROM burgers WHERE condition
 };
