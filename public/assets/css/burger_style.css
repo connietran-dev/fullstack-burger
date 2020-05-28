@@ -1,3 +1,60 @@
 body {
-    background-color: antiquewhite;
+    font-family: 'DM Mono', sans-serif;
+    margin: 40px;
+    background-color: #FDCA21;
+}
+
+.container {
+    background-color: white;
+    margin: 5px 20px;
+    border-radius: 10px;
+    padding: 30px 40px
+}
+
+h1 {
+    font-family: 'Bungee Shade', sans-serif;
+    font-size: 36px;
+}
+
+h2 {
+    font-family: 'DM Mono', monospace;
+    margin-bottom: 28px;
+}
+
+button {
+    margin-left: 15px;
+    background-color: rgb(89, 89, 89);
+    color: white;
+    border-radius: 5px;
+    border: none;
+    padding: 2px 10px;
+}
+
+.change-devoured, .form-button {
+    background-color: #FDCA21;
+    color: black;
+}
+
+.form-button {
+    margin: 20px 0;
+}
+
+.burger-list {
+    display: flex;
+    justify-content: space-between;
+    vertical-align: center;
+    padding: 20px 0;
+}
+
+.not-devoured, .devoured-burgers {
+    width: 50%;
+    background-color: white;
+    margin: 20px;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+li {
+    margin-bottom: 10px;
+    font-size: 18px;
 }

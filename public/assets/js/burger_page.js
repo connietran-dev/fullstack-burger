@@ -8,7 +8,7 @@ $(function () {
         let newBurger = {
             // Value for burger_name column is id="burger" textarea
             burger_name: $("#burger").val().trim(),
-            // Default to checked?????
+            // Default devoured to false
             devoured: 0
         };
 

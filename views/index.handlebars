@@ -1,38 +1,46 @@
-<h1>Burgers!</h1>
+<div class="container">
+  <h1>Full Stack Burgers</h1>
+  <h3>Delicious full stack burgers</h3>
+</div>
 
-<h2>Burgers are delicious!</h2>
-
-<h2>Burgers that are not yet devoured</h2>
-
-{{!-- If devoured returns a falsy value (ie, not yet devoured), Handlebars WILL render burger-block partial, setting devoured to false. 
+<div class="burger-list">
+  {{!-- If devoured returns a falsy value (ie, not yet devoured), Handlebars WILL render burger-block partial, setting devoured to false. 
 Otherwise, it will render nothing. --}}
-<ul>
-  {{#each burgers}}
-    {{#unless devoured}}
+  <div class="not-devoured">
+    <h2>Order Here</h2>
+    <ul>
+      {{#each burgers}}
+      {{#unless devoured}}
       {{> burgers/burger-block devoured=false}}
-    {{/unless}}
-  {{/each}}
-</ul>
+      {{/unless}}
+      {{/each}}
+    </ul>
+  </div>
 
 
-<h2>Burgers that are devoured</h2>
-
-{{!-- If devoured is true (eaten), it will render --}}
-<ul>
-  {{#each burgers}}
-    {{#if devoured}}
+  {{!-- If devoured is true (eaten), it will render --}}
+  <div class="devoured-burgers">
+    <h2>Devoured Burgers</h2>
+    <ul>
+      {{#each burgers}}
+      {{#if devoured}}
       {{> burgers/burger-block devoured=true}}
-    {{/if}}
-  {{/each}}
-</ul>
+      {{/if}}
+      {{/each}}
+    </ul>
+  </div>
+</div>
 
-<h2>Add a Burger</h2>
-<form class="create-form">
+<div class="container">
+  <h2>Add a Burger</h2>
+  <h4>Enter a burger you'd like to eat, and click submit</h4>
+  <form class="create-form">
 
+    <p>Burger Name:</p>
     <div class="form-group">
-        <label for="burger">Burger Name:</label>
-        <textarea type="text" id="burger" rows="7" name="name" placeholder="Guacamole Burger"></textarea>
+      <textarea type="text" id="burger" rows="7" name="name" placeholder="Guacamole Burger"></textarea>
     </div>
 
-    <button type="submit">Add Burger</button>
-</form>
+    <button type="submit" class="form-button">Add Burger</button>
+  </form>
+</div>
