@@ -2,7 +2,7 @@
 $(function () {
     // Create New Burger
     // Add a Burger form
-    $(".create-form").on("submit", function (event) {
+    $(".create-form").on("submit", function(event) {
         event.preventDefault();
 
         let newBurger = {
@@ -17,7 +17,7 @@ $(function () {
             type: "POST",
             data: newBurger
         }).then(
-            function () {
+            function() {
                 console.log("Created new burger");
                 // Reload the page to get the updated list
                 location.reload();

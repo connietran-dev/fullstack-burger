@@ -2,11 +2,8 @@
 const connection = require('../config/connection.js');
 
 // Helper function for SQL syntax
-// If we want to pass 3 values into the mySQL query.
-// In order to write the query, we need 3 question marks.
-// The above helper function loops through and creates an array of question marks - ["?", "?", "?"] - and turns it into a string.
-// ["?", "?", "?"].toString() => "?,?,?";
-function printQuestionMarks(num) {
+// The  helper function loops through and creates an array of question marks - ["?", "?", "?"] - and turns it into a string "?,?,?" based on the incoming MySQL query
+const printQuestionMarks = num => {
   let arr = [];
 
   for (let i = 0; i < num; i++) {
@@ -17,7 +14,7 @@ function printQuestionMarks(num) {
 }
 
 // Helper function to convert object key/value pairs to SQL syntax
-function objToSql(ob) {
+const objToSql = ob => {
   let arr = [];
 
   // loop through the keys and push the key/value as a string int arr
@@ -25,23 +22,22 @@ function objToSql(ob) {
     let value = ob[key];
     // check to skip hidden properties
     if (Object.hasOwnProperty.call(ob, key)) {
-      // if string with spaces, add quotations (Lana Del Grey => 'Lana Del Grey')
+      // if string with spaces, add quotations (Blue Cheese Cheeseburger => 'Blue Cheese Cheeseburger')
       if (typeof value === "string" && value.indexOf(" ") >= 0) {
         value = "'" + value + "'";
       }
-      // e.g. {name: 'Lana Del Grey'} => ["name='Lana Del Grey'"]
+      // e.g. {name: 'Blue Cheese Cheeseburger'} => ["name='Blue Cheese Cheeseburger'"]
       // e.g. {devoured: true} => ["devoured=true"]
       arr.push(key + "=" + value);
     }
   }
-
   // translate array of strings to a single comma-separated string
   return arr.toString();
 }
 
 // Object for all our SQL statement functions.
 const orm = {
-  all: function (tableInput, cb) {
+  all: (tableInput, cb) => {
     let queryString = "SELECT * FROM " + tableInput + ";";
     connection.query(queryString, function (err, result) {
       if (err) {
@@ -51,7 +47,7 @@ const orm = {
       cb(result);
     });
   },
-  create: function (table, cols, vals, cb) {
+  create: (table, cols, vals, cb) => {
     var queryString = "INSERT INTO " + table;
 
     queryString += " (";
@@ -63,7 +59,7 @@ const orm = {
 
     console.log("Insert query: ", queryString);
 
-    connection.query(queryString, vals, function (err, result) {
+    connection.query(queryString, vals, (err, result) => {
       if (err) {
         throw err;
       }
@@ -72,7 +68,7 @@ const orm = {
     });
   },
   // An example of objColVals would be {burger_name: panther, devoured: true}
-  update: function (table, objColVals, condition, cb) {
+  update: (table, objColVals, condition, cb) => {
     var queryString = "UPDATE " + table;
 
     queryString += " SET ";
@@ -81,7 +77,7 @@ const orm = {
     queryString += condition;
 
     console.log("UPDATE query: ", queryString);
-    connection.query(queryString, function (err, result) {
+    connection.query(queryString, (err, result) => {
       if (err) {
         throw err;
       }
@@ -89,12 +85,12 @@ const orm = {
       cb(result);
     });
   },
-  delete: function (table, condition, cb) {
+  delete: (table, condition, cb) => {
     let queryString = "DELETE FROM " + table;
     queryString += " WHERE ";
     queryString += condition;
 
-    connection.query(queryString, function (err, result) {
+    connection.query(queryString, (err, result) => {
       if (err) {
         throw err;
       }
