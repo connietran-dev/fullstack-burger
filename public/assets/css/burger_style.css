@@ -22,6 +22,7 @@ h2 {
 }
 
 button {
+    font-family: 'Open Sans', monospace;
     margin-left: 15px;
     background-color: rgb(89, 89, 89);
     color: white;
@@ -57,4 +58,9 @@ button {
 li {
     margin-bottom: 10px;
     font-size: 18px;
+}
+
+textarea {
+    border: 1px solid black;
+    border-radius: 5px;
 }
