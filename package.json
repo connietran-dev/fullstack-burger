@@ -4,7 +4,9 @@
   "description": "An MVC burger logger ORM",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "watch": "nodemon server.js",
+    "seed": "mysql -h localhost -u root -p < ./db/db.sql"
   },
   "keywords": [
     "mysql",
